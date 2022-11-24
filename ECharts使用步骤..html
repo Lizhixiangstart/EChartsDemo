@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100%;
+            height: 600px;
+            /* background-color: pink; */
+        }
+    </style>
+    <script src="./js/echarts.min.js"></script>
+</head>
+
+<body>
+    <div class="box">
+    </div>
+    <script>
+        var myChart = echarts.init(document.querySelector('.box'));
+        // 指定图表的配置项和数据
+        option = {
+            //标题
+            title: {
+                text: '折线图123'
+            },
+            //图标提示框组件
+            tooltip: {
+                //触发方式(坐标轴)
+                trigger: 'axis'//item
+            },
+            //图例组件
+            legend: {
+                data: ['Email', 'Union Ads', 'Video Ads', 'Direct', 'Search Engine']
+            },
+            //grid可以控制线型图、柱状图直角坐标系的大小
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                //是否显示刻度标签
+                containLabel: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            //设置x轴相关设置
+            xAxis: {
+                type: 'category',
+                //边界是否有缝隙
+                boundaryGap: false,
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            //系列图表配置，决定显示哪种类型的图表
+
+            series: [
+                {
+                    //series中有了name属性，legins中data可以删除
+                    name: 'Email',
+                    type: 'line',
+                    //数据堆叠
+                    stack: 'Total',
+                    data: [120, 132, 101, 134, 90, 230, 210]
+                },
+                {
+                    name: 'Union Ads',
+                    type: 'line',
+                    stack: 'Total',
+                    data: [220, 182, 191, 234, 290, 330, 310]
+                },
+                {
+                    name: 'Video Ads',
+                    type: 'line',
+                    stack: 'Total',
+                    data: [150, 232, 201, 154, 190, 330, 410]
+                },
+                {
+                    name: 'Direct',
+                    type: 'line',
+                    stack: 'Total',
+                    data: [320, 332, 301, 334, 390, 330, 320]
+                },
+                {
+                    name: 'Search Engine',
+                    type: 'line',
+                    stack: 'Total',
+                    data: [820, 932, 901, 934, 1290, 1330, 1320]
+                }
+            ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+
+    </script>
+</body>
+
+</html>
